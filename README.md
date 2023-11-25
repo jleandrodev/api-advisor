@@ -8,7 +8,7 @@ A Casamento Manager API é uma aplicação de gerenciamento de casamentos que pe
 
     ```bash
 
-    `git clone https://seurepositorio.com/api-advisor.git`
+    git clone https://github.com/jleandrodev/api-advisor.git
 
     ```
 
@@ -16,8 +16,8 @@ A Casamento Manager API é uma aplicação de gerenciamento de casamentos que pe
 
     ```bash
 
-    `cd api-advisor
-    pip install -r requirements.txt`
+    cd api-advisor
+    pip install -r requirements.txt
 
     ```
 
@@ -29,7 +29,7 @@ A Casamento Manager API é uma aplicação de gerenciamento de casamentos que pe
 
     ```bash
 
-    `flask db upgrade`
+    flask db upgrade
 
     ```
 
@@ -37,7 +37,7 @@ A Casamento Manager API é uma aplicação de gerenciamento de casamentos que pe
 
     ```bash
 
-    `flask run`
+    flask run
 
     ```
 
@@ -80,11 +80,11 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "nome": "John Doe",
     "email": "john.doe@example.com",
     "senha": "senha123"
-  }`
+  }
 
   ```
 
@@ -92,10 +92,10 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "mensagem": "Usuário cadastrado com sucesso!",
     "id_usuario": 123
-  }`
+  }
 
   ```
 
@@ -103,9 +103,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Ocorreu um erro ao cadastrar o usuário."
-  }`
+  }
 
   ```
 
@@ -120,7 +120,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `[
+  [
     {
       "id": 1,
       "nome": "Convidado 1",
@@ -133,7 +133,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
       "telefone": "987654321",
       "casamento": 1
     }
-  ]`
+  ]
 
   ```
 
@@ -150,11 +150,11 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "nome": "Convidado Novo",
     "telefone": "555123456",
     "casamento": 1
-  }`
+  }
 
   ```
 
@@ -162,12 +162,12 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 3,
     "nome": "Convidado Novo",
     "telefone": "555123456",
     "casamento": 1
-  }`
+  }
 
   ```
 
@@ -175,9 +175,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Ocorreu um erro ao cadastrar o convidado."
-  }`
+  }
 
   ```
 
@@ -190,12 +190,12 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 1,
     "nome": "Convidado 1",
     "telefone": "123456789",
     "casamento": 1
-  }`
+  }
 
   ```
 
@@ -203,9 +203,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Convidado não encontrado!"
-  }`
+  }
 
   ```
 
@@ -220,7 +220,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `[
+  [
     {
       "id": 1,
       "name": "Casamento 1",
@@ -233,7 +233,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
       "data_casamento": "2023-06-15",
       "assistentes": ["3", "4"]
     }
-  ]`
+  ]
 
   ```
 
@@ -250,11 +250,11 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "name": "Novo Casamento",
     "data_casamento": "2023-07-10",
     "assistentes": ["5", "6"]
-  }`
+  }
 
   ```
 
@@ -262,12 +262,12 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 3,
     "name": "Novo Casamento",
     "data_casamento": "2023-07-10",
     "assistentes": ["5", "6"]
-  }`
+  }
 
   ```
 
@@ -275,9 +275,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Ocorreu um erro ao cadastrar o casamento."
-  }`
+  }
 
   ```
 
@@ -290,12 +290,12 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 1,
     "name": "Casamento 1",
     "data_casamento": "2023-05-25",
     "assistentes": ["1", "2"]
-  }`
+  }
 
   ```
 
@@ -303,9 +303,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Casamento não encontrado!"
-  }`
+  }
 
   ```
 
@@ -320,7 +320,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `[
+  [
     {
       "id": 1,
       "nome": "Assistente 1",
@@ -331,7 +331,7 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
       "nome": "Assistente 2",
       "telefone": "987654321"
     }
-  ]`
+  ]
 
   ```
 
@@ -347,10 +347,10 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "nome": "Novo Assistente",
     "telefone": "555123456"
-  }`
+  }
 
   ```
 
@@ -358,11 +358,11 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 3,
     "nome": "Novo Assistente",
     "telefone": "555123456"
-  }`
+  }
 
   ```
 
@@ -370,9 +370,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Ocorreu um erro ao cadastrar o assistente."
-  }`
+  }
 
   ```
 
@@ -385,11 +385,11 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "id": 1,
     "nome": "Assistente 1",
     "telefone": "123456789"
-  }`
+  }
 
   ```
 
@@ -397,9 +397,9 @@ A documentação da API, gerada automaticamente com Swagger, está disponível e
 
   ```bash
 
-  `{
+  {
     "erro": "Assistente não encontrado!"
-  }`
+  }
 
   ```
 
