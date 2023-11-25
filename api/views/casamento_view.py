@@ -12,8 +12,57 @@ class Casamento(Resource):
         casamentos = casamento_service.listar_casamentos()
         cs = casamento_schema.CasamentoSchema(many=True)
         return make_response(cs.jsonify(casamentos), 200)
+
     @jwt_required()
     def post(self):
+        """
+        Cadastra um novo casamento.
+        ---
+        parameters:
+          - name: body
+            in: body
+            description: Cadastrar novo casamento
+            required: true
+            schema:
+              id: Casamento
+              required:
+                - name
+                - data_casamento
+                - assistentes
+              properties:
+                name:
+                  type: string
+                  description: Nome do casamento
+                data_casamento:
+                  type: string
+                  format: date
+                  description: Data do casamento (formato YYYY-MM-DD)
+                assistentes:
+                  type: array
+                  items:
+                    type: string
+                  description: Lista de IDs dos assistentes associados ao casamento         
+        responses:
+          200:
+            description: Casamento cadastrado com sucesso!
+            schema:
+              id: CasamentoResposta
+              properties:
+                mensagem:
+                  type: string
+                  description: Mensagem de sucesso
+                id_casamento:
+                  type: integer
+                  description: ID do casamento cadastrado
+          500:
+            description: Ocorreu um erro ao cadastrar o casamento.
+            schema:
+              id: ErroResposta
+              properties:
+                erro:
+                  type: string
+                  description: Mensagem de erro
+        """
         cs = casamento_schema.CasamentoSchema()
         validate = cs.validate(request.json)
 
@@ -40,8 +89,7 @@ class CasamentoDetails(Resource):
         
         cs = casamento_schema.CasamentoSchema()
         return make_response(cs.jsonify(casamento), 200)
-    
-    @jwt_required()
+
     def put(self, id):
         casamento_bd = casamento_service.casamento_detail(id)
         if casamento_bd is None:
@@ -60,8 +108,7 @@ class CasamentoDetails(Resource):
             casamento_service.editar_casamento(casamento_bd, casamento_novo)
             casamento_atualizado = casamento_service.casamento_detail(id)
             return make_response(cs.jsonify(casamento_atualizado), 200)
-        
-    @jwt_required()
+
     def delete(self, id):
         casamento = casamento_service.casamento_detail(id)
         if casamento is None:
