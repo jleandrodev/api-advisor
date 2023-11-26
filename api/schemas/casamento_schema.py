@@ -9,5 +9,5 @@ class CasamentoSchema(ma.SQLAlchemyAutoSchema):
 
     name = fields.String(required=True)
     data_casamento = fields.String(required=True)
-    assistentes = fields.List(fields.String)
-    convidados = fields.List(fields.String)
+    assistentes = fields.Nested('AssistenteSchema', only=('nome', 'telefone'), many=True)
+    convidados = fields.Nested('ConvidadoSchema', only=('nome', 'telefone'), many=True)

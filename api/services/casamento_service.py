@@ -1,6 +1,7 @@
 from ..models import casamento_model
 from api import db
 from ..services.assistente_service import assistente_detail
+from sqlalchemy.orm import joinedload
 
 def cadastrar_casamento(casamento):
     casamento_db = casamento_model.Casamento(name=casamento.name, data_casamento=casamento.data_casamento)
@@ -14,7 +15,11 @@ def cadastrar_casamento(casamento):
     return casamento_db
 
 def listar_casamentos():
-    casamentos = casamento_model.Casamento.query.all()
+    casamentos = (
+        casamento_model.Casamento.query
+        .options(joinedload(casamento_model.Casamento.assistentes))
+        .all()
+    )
     return casamentos
 
 def casamento_detail(id):
