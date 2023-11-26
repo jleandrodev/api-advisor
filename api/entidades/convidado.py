@@ -27,4 +27,3 @@ class Convidado():
     @casamento.setter
     def casamento(self, casamento):
         self.__casamento = casamento
-

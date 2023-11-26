@@ -15,7 +15,7 @@ class Convidado(Resource):
     
     @jwt_required()
     def post(self):
-        cs = convidado_schema.ConvidadoSchema()
+        cs = convidado_schema.ConvidadoSchemaInput()
         validate = cs.validate(request.json)
 
         if validate:
@@ -51,7 +51,7 @@ class ConvidadoDetails(Resource):
         if convidado_bd is None:
             return make_response("Convidado não encontrado!", 404)
         
-        cs = convidado_schema.ConvidadoSchema()
+        cs = convidado_schema.ConvidadoSchemaInput()
         validate = cs.validate(request.json)
         if validate:
             return make_response(jsonify(validate), 400)

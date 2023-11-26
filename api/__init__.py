@@ -17,5 +17,5 @@ JWTManager(app)
 api = Api(app)
 swagger = Swagger(app)
 
-from .views import casamento_view, convidado_view, assistente_view, usuario_view, login_view
-from .models import casamento_model, convidado_model, assistente_model, usuario_model
+from .views import casamento_view, convidado_view, assistente_view, usuario_view, login_view, acompanhante_view
+from .models import casamento_model, convidado_model, assistente_model, usuario_model, acompanhante_model
