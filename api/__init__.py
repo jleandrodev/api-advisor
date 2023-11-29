@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
+from flask_cors import CORS
 
 app = Flask(__name__)
 
@@ -16,6 +17,7 @@ JWTManager(app)
 
 api = Api(app)
 swagger = Swagger(app)
+CORS(app)
 
 from .views import casamento_view, convidado_view, assistente_view, usuario_view, login_view, acompanhante_view
 from .models import casamento_model, convidado_model, assistente_model, usuario_model, acompanhante_model

@@ -7,7 +7,6 @@ from ..entidades import casamento
 from ..services import casamento_service
 
 class Casamento(Resource):
-    @jwt_required()
     def get(self):
         casamentos = casamento_service.listar_casamentos()
         cs = casamento_schema.CasamentoSchema(many=True)
@@ -81,7 +80,7 @@ class Casamento(Resource):
 
         
 class CasamentoDetails(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self, id):
         casamento = casamento_service.casamento_detail(id)
         if casamento is None:

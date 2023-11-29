@@ -5,8 +5,9 @@ from marshmallow import fields
 class CasamentoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = casamento_model.Casamento
-        fields = ('id', 'name', 'data_casamento', 'convidados')
+        fields = ('id', 'name', 'data_casamento', 'assistentes', 'convidados')
 
     name = fields.String(required=True)
     data_casamento = fields.String(required=True)
+    assistentes = fields.Nested('AssistenteSchema', only=('nome', 'telefone'), many=True)
     convidados = fields.Nested('ConvidadoSchema', only=('id', 'nome', 'telefone', 'acompanhantes'), many=True)
