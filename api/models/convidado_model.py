@@ -8,5 +8,7 @@ class Convidado(db.Model):
     nome = db.Column(db.String(50), nullable=False)
     telefone = db.Column(db.String(11), nullable=False)
 
-    casamento_id = db.Column(db.Integer, db.ForeignKey("casamento.id"))
+    casamento_id = db.Column(db.String, db.ForeignKey("casamento.id"))
     casamento = db.relationship(casamento_model.Casamento, backref=db.backref('convidados', lazy='dynamic'))
+
+    acompanhantes = db.relationship('Acompanhante', back_populates='convidado')

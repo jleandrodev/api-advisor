@@ -1,8 +1,12 @@
-from ..models import convidado_model
+from ..models import convidado_model, acompanhante_model
+from ..entidades.convidado import Convidado
 from api import db
 
 def cadastrar_convidado(convidado):
-    convidado_db = convidado_model.Convidado(nome=convidado.nome, telefone=convidado.telefone, casamento=convidado.casamento)
+    novo_convidado = Convidado(nome=convidado.nome, telefone=convidado.telefone, casamento=convidado.casamento, acompanhantes=convidado.acompanhantes)
+    convidado_db = convidado_model.Convidado(nome=novo_convidado.nome, telefone=novo_convidado.telefone, casamento_id=novo_convidado.casamento)
+    if not isinstance(convidado_db, convidado_model.Convidado):
+        raise ValueError("O objeto `convidado` não é uma instância válida de Convidado.")
 
     db.session.add(convidado_db)
     db.session.commit()

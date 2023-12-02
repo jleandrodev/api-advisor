@@ -4,37 +4,43 @@ from api import api
 from flask import request, make_response, jsonify
 from ..schemas import convidado_schema
 from ..entidades import convidado
-from ..services import convidado_service, casamento_service
+from ..entidades.acompanhante import Acompanhante
+from ..services import convidado_service, acompanhante_service
 
-class Convidado(Resource):
+class ConvidadoList(Resource):
     @jwt_required()
     def get(self):
         convidados = convidado_service.listar_convidados()
         cs = convidado_schema.ConvidadoSchema(many=True)
         return make_response(cs.jsonify(convidados), 200)
     
-    @jwt_required()
+    # @jwt_required()
     def post(self):
-        cs = convidado_schema.ConvidadoSchemaInput()
+        cs = convidado_schema.ConvidadoSchema()
         validate = cs.validate(request.json)
+        print(request.json)
 
         if validate:
-            make_response(jsonify(validate), 400)
+            return make_response(jsonify(validate), 400)
         else:
-            nome = request.json['nome']
-            telefone = request.json['telefone']
-            casamento = request.json['casamento']
+            nome_convidado = request.json['nome']
+            telefone_convidado = request.json['telefone']
+            casamento_convidado = request.json['casamento']
+            acompanhantes_data = request.json['acompanhantes']
 
-            casamento_convidado = casamento_service.casamento_detail(casamento)
-            if casamento_convidado is None:
-                return make_response("Casamento não encontrado", 404)
 
-            novo_convidado = convidado.Convidado(nome=nome, telefone=telefone, casamento=casamento_convidado)
-
+            novo_convidado = convidado.Convidado(nome=nome_convidado, telefone=telefone_convidado, casamento=casamento_convidado, acompanhantes=acompanhantes_data)
             result = convidado_service.cadastrar_convidado(novo_convidado)
+            
+            for acompanhante in acompanhantes_data:
+                nome_acompanhante = acompanhante["nome"]
+                idade_acompanhante = acompanhante['idade']
+                convidado_id = str(result.id)
 
-            return make_response(cs.jsonify(result), 201)
-        
+                novo_acompanhante = Acompanhante(nome=nome_acompanhante, idade=idade_acompanhante, convidado=convidado_id)
+                acompanhante_service.cadastrar_acompanhante(novo_acompanhante)
+
+            return make_response(cs.jsonify(result), 201)    
 class ConvidadoDetails(Resource):
     @jwt_required()
     def get(self, id):
@@ -76,5 +82,5 @@ class ConvidadoDetails(Resource):
         return make_response("", 204)
 
     
-api.add_resource(Convidado, '/convidados')
+api.add_resource(ConvidadoList, '/convidados')
 api.add_resource(ConvidadoDetails, '/convidados/<int:id>')

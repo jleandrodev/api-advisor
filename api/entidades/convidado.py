@@ -1,8 +1,9 @@
 class Convidado():
-    def __init__(self, nome, telefone, casamento):
+    def __init__(self, nome, telefone, casamento, acompanhantes):
         self.__nome = nome
         self.__telefone = telefone
         self.__casamento = casamento
+        self.__acompanhantes = acompanhantes
 
     @property
     def nome(self):
@@ -27,3 +28,11 @@ class Convidado():
     @casamento.setter
     def casamento(self, casamento):
         self.__casamento = casamento
+
+    @property
+    def acompanhantes(self):
+        return self.__acompanhantes
+    
+    @acompanhantes.setter
+    def acompanhantes(self, acompanhantes):
+        self.__acompanhantes = acompanhantes

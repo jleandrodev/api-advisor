@@ -2,7 +2,7 @@ from ..models import acompanhante_model
 from api import db
 
 def cadastrar_acompanhante(acompanhante):
-    acompanhante_db = acompanhante_model.Acompanhante(nome=acompanhante.nome, idade=acompanhante.idade, convidado=acompanhante.convidado)
+    acompanhante_db = acompanhante_model.Acompanhante(nome=acompanhante.nome, idade=acompanhante.idade, convidado_id=acompanhante.convidado)
 
     db.session.add(acompanhante_db)
     db.session.commit()

@@ -11,3 +11,4 @@ class AcompanhanteSchema(ma.SQLAlchemyAutoSchema):
     idade = fields.String(required=True, validate=lambda s: s in [e.value for e in acompanhante_model.FaixaEtaria])
     
     convidado_id = fields.String(required=True)
+
